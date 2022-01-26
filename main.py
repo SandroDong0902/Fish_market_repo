@@ -5,7 +5,12 @@ import pymongo
 
 
 class FishMarket:
-
+    """
+    FishMarket class that gets the fish market resources from the s3 database,
+    concatenate them and calculates its average stats.
+    After average it can upload the data to mongoDB and/or
+    S3 data-eng-resources/Data26/fish/ bucket
+    """
     def __init__(self):
 
         self.s3_client = boto3.client('s3')
@@ -75,7 +80,7 @@ class FishMarket:
         data = self.db.fish_market.find()
         for d in data:
             pp(d)
-        print('\n', 'It works!') # I don't mean it works correctly 100%
+        print('\n', 'Done!')
 
 
 f = FishMarket()
